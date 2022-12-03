@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sadar Sampah</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .leaflet-container {
+        height: 400px;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%; 
+        margin: 50px auto 0 auto;
+    }
+</style>    
+</head>
+<body>
+    <header>
+        <%- include('../common/header')%>
+    </header>
+
+    <main>
+        <div class="hero-image">
+            <div
+            class="p-5 text-center bg-image"
+            style="
+            background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+            height: 400px;
+            "
+            >
+            <div class="mask">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                <h1 class="mb-3">Heading</h1>
+                <h4 class="mb-3">Subheading</h4>
+                <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+                >Call to action</a
+                >
+                   </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <article>
+            <h2 class="m-5">Berita terbaru</h2>
+
+            <%- include('../common/card') %> 
+        </article>
+
+        <div id="map"></div>
+
+    </main>
+    
+    <footer>
+        <%- include('../common/footer') %> 
+    </footer>
+
+
+    <script>
+        async function getData(){
+        const resp = await fetch("http://localhost:3000/api/accounts");
+        const data = await resp.json();
+            
+        locations.push(data.data)
+            
+        for (var i = 0; i < 100; i++) {
+            marker = new L.marker([locations[0][i].latitude, locations[0][i].longitude])
+                    .bindPopup(locations[0][i])
+                    .addTo(map);
+                }      
+        }
+
+        var locations = [];
+        console.log(locations)
+        getData();
+        
+        
+        var map = L.map('map').setView([-2.548926, 118.0148634], 4);
+        mapLink =
+        '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        
+    </script>
+</body>
+</html>
