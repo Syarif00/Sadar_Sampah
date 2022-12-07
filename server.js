@@ -5,7 +5,37 @@ const route = require("./router")
 
 const port = 3000;
 
-app.use(express.static('public'))
+
+
+app.set('view engine', 'ejs');
+
+app.get('/login', (req,res)=>{
+    res.render('pages/login')
+})
+
+app.get('/', (req,res)=>{
+    res.render('pages/home')
+})
+
+app.get('/pendaftaran', (req,res)=>{
+    res.render('pages/signup')
+})
+
+app.get('/perpustakaan', (req,res)=>{
+    res.render('pages/library')
+})
+
+app.get('/peta', (req,res)=>{
+    res.render('pages/maps')
+}) 
+
+app.get('/tentang-kami', (req,res)=>{
+    res.render('pages/about')
+}) 
+
+app.get('/detail', (req,res)=>{
+    res.render('pages/detail')
+}) 
 
 app.use('/api', route)
 
