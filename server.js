@@ -13,12 +13,12 @@ app.get('/login', (req,res)=>{
     res.render('pages/login')
 })
 
-app.get('/pendaftaran', (req,res)=>{
-    res.render('pages/signup')
-})
-
 app.get('/', (req,res)=>{
     res.render('pages/home')
+})
+
+app.get('/pendaftaran', (req,res)=>{
+    res.render('pages/signup')
 })
 
 app.get('/perpustakaan', (req,res)=>{
@@ -31,6 +31,10 @@ app.get('/peta', (req,res)=>{
 
 app.get('/tentang-kami', (req,res)=>{
     res.render('pages/about')
+}) 
+
+app.get('/detail', (req,res)=>{
+    res.render('pages/detail')
 }) 
 
 app.use('/api', route)
