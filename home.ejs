@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sadar Sampah</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .leaflet-container {
+        height: 400px;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%; 
+        margin: 50px auto 0 auto;
+    }
+</style>    
+</head>
+<body>
+    <header>
+        <%- include('../common/header')%>
+    </header>
+
+    <main>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://github.com/BougelBadag/slide_sadar_sampah/blob/main/slide_sadar-sampah.jpg?raw=true" class="d-block w-100" alt="Sadar Sampah">
+              </div>
+              <div class="carousel-item">
+                <img src="https://github.com/BougelBadag/slide_sadar_sampah/blob/main/slide_peta-bank-sampah.jpg?raw=true" class="d-block w-100" alt="Peta Bank Sampah">
+              </div>
+              <div class="carousel-item">
+                <img src="https://github.com/BougelBadag/slide_sadar_sampah/blob/main/slide_perpus.jpg?raw=true" class="d-block w-100" alt="Perpustakaan">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+        <div class="container-fluid pt-5 pb-5">
+            <div class="container text-center">
+                <h2 class="display-3">SADAR-SAMPAH.ID</h2>
+                <P class="fs-5 lh-lg">Di Indonesia banyak masyarakat kurang memahami cara mengolah sampah yang baik dan benar. SADAR-SAMPAH.ID hadir sebagai aplikasi berbasis web untuk mempermudah dalam mengedukasi masyarakat cara mengolah dan menyalurkan sampah pada bank sampah</P>
+            </div>
+        </div>
+            
+        <article>
+            <div class="row pt-5 pb-5">
+                <div class="col-md-6">
+                    <div class="container-fluid p-5">
+                        <div class="container text-center">
+                            <h2>Perpustakaan</h2>
+                            <P class="fs-5 lh-lg">Kumpulan artikel dan berita untuk mengedukasi masyarakat tentang cara mengolah sampah, mendaur ulang sampah dan kegiatan atau gerakan sosial terkait lingkungan</P>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <%- include('../common/card') %>
+                </div>
+            </div>
+        </article>
+
+        <div class="container-fluid pt-5">
+            <div class="container text-center">
+                <h2>Peta Bank Sampah</h2>
+                <P class="fs-5 lh-lg">Untuk mengurangi dampak dari membuang sampah sembarangan, Pemerintah membuat sebuah system yang di sebut Bank Sampah. Bank Sampah memiliki fungsi sebangai tempat penampungan dan pengolahan sampah yang disalurkan oleh masyarakat</P>
+                <p class="fs-5 lh-lg">Peta Bank Sampah membantu anda menemukan lokasi Bank Sampah terdekat di daerah sekitar anda. Lokasinya telah disesuaikan dengan daerah yang anda cantumkan pada saat melakukan pendaftaran</p>
+            </div>
+        </div>
+        <div id="map"></div>
+
+    </main>
+    
+    <footer>
+        <%- include('../common/footer') %> 
+    </footer>
+
+
+    <script>
+        async function getData(){
+        const resp = await fetch("http://localhost:3000/api/accounts");
+        const data = await resp.json();
+            
+        locations.push(data.data)
+            
+        for (var i = 0; i < 100; i++) {
+            marker = new L.marker([locations[0][i].latitude, locations[0][i].longitude])
+                    .bindPopup(locations[0][i])
+                    .addTo(map);
+                }      
+        }
+
+        var locations = [];
+        console.log(locations)
+        getData();
+        
+        
+        var map = L.map('map').setView([-8.475606579908114, 116.28940565653794], 9);
+        mapLink =
+        '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        
+    </script>
+</body>
+</html>
