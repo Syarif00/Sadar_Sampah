@@ -15,6 +15,10 @@
         margin: 0;
         padding: 0;
     }
+    
+    main{
+        overflow: hidden;
+    }
 
     .leaflet-container {
         height: 400px;
@@ -31,33 +35,58 @@
     </header>
 
     <main>
-        <div class="hero-image">
-            <div
-            class="p-5 text-center bg-image"
-            style="
-            background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
-            height: 400px;
-            "
-            >
-            <div class="mask">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white">
-                <h1 class="mb-3">Heading</h1>
-                <h4 class="mb-3">Subheading</h4>
-                <a class="btn btn-outline-light btn-lg" href="#!" role="button"
-                >Call to action</a
-                >
-                   </div>
-                  </div>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://github.com/BougelBadag/slide_sadar_sampah/blob/main/slide_sadar-sampah.jpg?raw=true" class="d-block w-100" alt="Sadar Sampah">
+              </div>
+              <div class="carousel-item">
+                <img src="https://github.com/BougelBadag/slide_sadar_sampah/blob/main/slide_peta-bank-sampah.jpg?raw=true" class="d-block w-100" alt="Peta Bank Sampah">
+              </div>
+              <div class="carousel-item">
+                <img src="https://github.com/BougelBadag/slide_sadar_sampah/blob/main/slide_perpus.jpg?raw=true" class="d-block w-100" alt="Perpustakaan">
               </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
         </div>
+        
+        <div class="container-fluid pt-5 pb-5">
+            <div class="container text-center">
+                <h2 class="display-3">SADAR-SAMPAH.ID</h2>
+                <P class="fs-5 lh-lg">Di Indonesia banyak masyarakat kurang memahami cara mengolah sampah yang baik dan benar. SADAR-SAMPAH.ID hadir sebagai aplikasi berbasis web untuk mempermudah dalam mengedukasi masyarakat cara mengolah dan menyalurkan sampah pada bank sampah</P>
+            </div>
+        </div>
+            
         <article>
-            <h2 class="m-5">Berita terbaru</h2>
-
-            <%- include('../common/card') %> 
+            <div class="row pt-5 pb-5">
+                <div class="col-md-6">
+                    <div class="container-fluid p-5">
+                        <div class="container text-center">
+                            <h2>Perpustakaan</h2>
+                            <P class="fs-5 lh-lg">Kumpulan artikel dan berita untuk mengedukasi masyarakat tentang cara mengolah sampah, mendaur ulang sampah dan kegiatan atau gerakan sosial terkait lingkungan</P>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <%- include('../common/card') %>
+                </div>
+            </div>
         </article>
 
+        <div class="container-fluid pt-5">
+            <div class="container text-center">
+                <h2>Peta Bank Sampah</h2>
+                <P class="fs-5 lh-lg">Untuk mengurangi dampak dari membuang sampah sembarangan, Pemerintah membuat sebuah system yang di sebut Bank Sampah. Bank Sampah memiliki fungsi sebangai tempat penampungan dan pengolahan sampah yang disalurkan oleh masyarakat</P>
+                <p class="fs-5 lh-lg">Peta Bank Sampah membantu anda menemukan lokasi Bank Sampah terdekat di daerah sekitar anda. Lokasinya telah disesuaikan dengan daerah yang anda cantumkan pada saat melakukan pendaftaran</p>
+            </div>
+        </div>
         <div id="map"></div>
 
     </main>
@@ -82,7 +111,6 @@
         }
 
         var locations = [];
-        console.log(locations)
         getData();
         
         

@@ -1,22 +1,64 @@
 <div class="container">
-    <div class="row m-2">
-        <div class="card m-2" style="width: 18rem;">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" class="mt-2 rounded" alt="Sunset Over the Sea"/>
+     <div class="row m-2"> 
+         <div class="card m-2" style="width: 18rem;">
+            <img src="https://zerowaste.id/wp-content/uploads/2022/12/pengolahan-sampah-plastik.jpeg" class="mt-2 rounded" alt="Sunset Over the Sea"/>
             <a href="/detail" class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Tahapan Proses Daur Ulang Sampah Plastik</p>
             </a>
         </div>
         <div class="card m-2" style="width: 18rem;">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" class="mt-2 rounded" alt="Sunset Over the Sea"/>
+            <img src="https://zerowaste.id/wp-content/uploads/2022/12/Sampah-Sachet-Cemari-Lingkungan-dan-Sulit-Didaur-Ulang.jpg" class="mt-2 rounded" alt="Sunset Over the Sea"/>
             <a href="/detail" class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Ancaman Sampah Kemasan Sachet Mulai Mendominasi</p>
             </a>
         </div>
         <div class="card m-2" style="width: 18rem;">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" class="mt-2 rounded" alt="Sunset Over the Sea"/>
+            <img src="https://zerowaste.id/wp-content/uploads/2022/12/perbedaan-food-loss-dan-food-waste.jpg" class="mt-2 rounded" alt="Sunset Over the Sea"/>
             <a href="/detail" class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Apa Perbedaan Food Loss dan Food Waste?</p>
+            </a>
+        </div>
+        <div class="card m-2" style="width: 18rem;">
+            <img src="https://zerowaste.id/wp-content/uploads/2022/12/pengolahan-limbah-masker.jpeg" class="mt-2 rounded" alt="Sunset Over the Sea"/>
+            <a href="/detail" class="card-body">
+              <p class="card-text">Apa yang Harus Kita Lakukan Dengan Limbah Masker Saat Ini?</p>
             </a>
         </div>
     </div>
 </div>
+<!-- 
+<script>
+  fetch('http://localhost:3000/api/articles')
+  .then(response => response.json()) 
+  .then(data => {
+
+    let article = data.article;
+
+    article.forEach(articles => {
+      let title = articles.title;
+      let image = articles.featuredImage;
+      let content = articles.description;
+
+      let newsContainer = document.getElementById('container');
+
+      let newsEl = document.createElement('div');
+      newsEl.setAttribute('id', `news-1`)
+      newsEl.innerHTML = `
+      <div class="row m-2"> 
+        <div class="card m-2" style="width: 18rem;">
+              <img src=${image} class="mt-2 rounded" alt=${title}/>
+              <a href="/detail/:id" class="card-body">
+                <p class="card-text">${title}</p>
+              </a>
+        </div>
+      </div>
+      `;
+
+      document.body.appendChild(newsEl);
+    });
+  })
+  .catch(error => {
+    // jika terjadi error, tampilkan pesan error di console
+    console.error(error);
+  });
+</script> -->
